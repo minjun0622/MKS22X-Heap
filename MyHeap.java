@@ -9,6 +9,9 @@ public class MyHeap {
 private static void pushDown(int[] data, int size, int index) {
   while (index < data.length){
     index = (index - 1) / 2;
+    if (data[index] < data[2 * index + 1]) {
+      swap(data[index], data[2 * index + 1]);
+    }
 
   }
 }
@@ -31,7 +34,7 @@ public static void heapsort(int[] data){
   }
 
   //swap method to help with sorting.
-  private void sort(int swap, int swapper) {
+  private void swap(int swap, int swapper) {
     int temp;
     temp = swap;
     swap = swapper;
