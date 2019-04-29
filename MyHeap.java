@@ -8,24 +8,32 @@ public class MyHeap {
    */
 private static void pushDown(int[] data, int size, int index) {
   while (index < data.length){
-    index = (index - 1) / 2;
     if (data[index] < data[2 * index + 1]) {
       swap(data[index], data[2 * index + 1]);
     }
-
+    if (data[index] < data[2 * index + 2]){
+      swap(data[index], data[2 * index + 2]);
+    }
+    index++;
   }
 }
   /*- push the element at index i up into the correct position. This will swap it with the parent node until the parent node is larger or the root is reached. [ should be O(logn) ]
   - precondition: index is between 0 and data.length-1 inclusive.
   */
 private static void pushUp(int[] data,int index){
-
+  while (index < data.length) {
+    if (data[index] > data[(index - 1) / 2]) {
+      swap(data[index], data[(index - 1) / 2]);
+    }
+    index++;
   }
+}
 
 
 //We will discuss this today:
+  //- convert the array into a valid heap. [ should be O(n) ]
 public static void heapify(int[] data){
-      //- convert the array into a valid heap. [ should be O(n) ]
+
     }
 
 
