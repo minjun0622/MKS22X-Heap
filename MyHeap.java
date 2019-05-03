@@ -7,6 +7,9 @@ public class MyHeap {
    - precondition: size is between 0 and data.length-1 inclusive.
    */
 private static void pushDown(int[] data, int size, int index) {
+  int right = 2 * index + 1;
+  int left = 2* index + 2;
+  int max;
   while (index < data.length){
     if (data[index] < data[2 * index + 1]) {
       swap(data[index], data[2 * index + 1]);
@@ -22,13 +25,14 @@ private static void pushDown(int[] data, int size, int index) {
   */
   //if there's an element that is greater than the parent.
 private static void pushUp(int[] data, int index){
-  while (index < data.length) {
-    if (data[index] < data[(index - 1) / 2]) {
-      swap(data[index], data[(index - 1) / 2]);
-    }
-    index++;
-  }
-}
+  int parent = (index - 1) / 2;
+  while (data[index] > data[parent] {
+    swap(data, index, parent);
+       index = parent;
+       parent = (index-1)/2;
+     }
+   }
+ }
 
 
 //We will discuss this today:
