@@ -21,7 +21,7 @@ private static void pushDown(int[] data, int size, int index) {
   - precondition: index is between 0 and data.length-1 inclusive.
   */
   //if there's an element that is greater than the parent.
-private static void pushUp(int[] data,int index){
+private static void pushUp(int[] data, int index){
   while (index < data.length) {
     if (data[index] < data[(index - 1) / 2]) {
       swap(data[index], data[(index - 1) / 2]);
@@ -34,24 +34,32 @@ private static void pushUp(int[] data,int index){
 //We will discuss this today:
   //- convert the array into a valid heap. [ should be O(n) ]
 public static void heapify(int[] data){
-
-
+  for (int i = 0; i < data.length - 1; i++) {
+    pushDown(data, data.length, i);
     }
-
+  }
 
 public static void heapsort(int[] data){
-    //- sort the array by converting it into a heap then removing the largest value n-1 times. [ should be O(nlogn) ]
+  heapify(data);
+  int size = data.length;
+  for (int i = size - 1; i >= 0; i--){
+    swap(data, 0, i);
+    size--;
+    pushDown(data, size, 0);
   }
+}
 
   //swap method to help with sorting.
-  private void swap(int swap, int swapper) {
+  private void swap(int[], data int swap, int swapper) {
     int temp;
-    temp = swap;
-    swap = swapper;
-    swapper= temp;
+    temp = data[swap];
+    data[swap] = data[swapper];
+    data[swapper] = temp;
   }
-  /*public static void main(String[] args) {
+
+  public static void main(String[] args) {
+    int[] data = {12, 14, 41, 1, 4, 5};
+
 
   }
-  */
 }
